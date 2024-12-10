@@ -14,4 +14,4 @@ else
 fi
 
 # build statically linked binary with Rust
-cargo install $BUILD_ARGS --no-track --locked --root "$PREFIX" --path .
+cargo install --no-track --locked --root "$PREFIX" --path .

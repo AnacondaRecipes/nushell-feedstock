@@ -22,6 +22,9 @@ requirements:
     # see: https://www.nushell.sh/book/installation.html#installing-rust
     - {{ compiler('rust') }}
     - {{ compiler('c') }}
+  host:
+    # this was needed under linux64 but not osx
+    - openssl # [not osx]
 
 test:
   commands:

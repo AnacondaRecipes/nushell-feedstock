@@ -11,18 +11,21 @@ source:
 
 build:
   number: 0
-  noarch: generic
-  script: cargo build --release && cargo install --path ${PREFIX}
+  #script: cargo build --release && cargo install --locked --path .
+  #script: cargo install --locked --path . --root={{ PREFIX }}
+  #script_env:
+  #  - CARGO_HOME={{ PREFIX }}
 
 requirements:
   build:
     # Default version in CBC.yaml is 1.82.0 we need >=1.66.1
     # see: https://www.nushell.sh/book/installation.html#installing-rust
-    - {{ compiler("rust") }}
+    - {{ compiler('rust') }}
+    - {{ compiler('c') }}
 
 test:
   commands:
-    - nushell -h
+    - nu -h
 
 about:
   home: https://github.com/nushell

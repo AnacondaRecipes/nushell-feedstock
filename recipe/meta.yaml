@@ -23,10 +23,10 @@ requirements:
     - clangdev  # [osx]
   host:
     - zlib
-    - openssl  # through the run_exports
-    - libgit2  # [osx]
-    - libiconv # [osx]
-    - libcurl  # [osx]
+    - openssl {{ openssl }} # through the run_exports
+    - libgit2 {{ libgit2 }} # [osx]
+    - libiconv {{ libiconv }} # [osx]
+    - libcurl {{ libcurl }} # [osx]
 
 test:
   commands:

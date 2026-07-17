@@ -7,7 +7,6 @@ mkdir -p "${PREFIX}/etc/pixi/nu"
 touch "${PREFIX}/etc/pixi/nu/global-ignore-conda-prefix"
 
 export OPENSSL_DIR="${PREFIX}"
-# export CARGO_BUILD_RUSTFLAGS="${CARGO_BUILD_RUSTFLAGS:-} -L${PREFIX}/lib"
 export CARGO_PROFILE_RELEASE_STRIP="symbols"
 export CARGO_PROFILE_RELEASE_LTO="false"
 

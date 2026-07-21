@@ -1,0 +1,59 @@
+{% set name = "nushell" %}
+{% set version = "0.114.0" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/{{ name }}/{{ name }}/archive/refs/tags/{{ version }}.tar.gz
+  sha256: 7bff1253be3a906c90fb9fce945ed9de282af8fddfe150ec0465bf17305c67e9
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - {{ stdlib("c") }}
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - {{ compiler('rust') }}
+    - cargo-bundle-licenses
+    - cargo-auditable
+    - clangdev  # [osx]
+  host:
+    - zlib
+    - openssl {{ openssl }} # through the run_exports
+    - libgit2 {{ libgit2 }} # [osx]
+    - libiconv {{ libiconv }} # [osx]
+    - libcurl {{ libcurl }} # [osx]
+
+test:
+  commands:
+    - pip check
+    - nu -c 'print ($env.NU_LIB_DIRS)'  # [unix]
+    - nu -c "print ($env.NU_LIB_DIRS)"  # [win]
+    - nu --version
+    - nu --help
+    - mkdir -p $CONDA_PREFIX/share/nushell/lib  # [unix]
+    - echo "export def hi [] { \"foo\" }" > $CONDA_PREFIX/share/nushell/lib/foo.nu  # [unix]
+    - mkdir %CONDA_PREFIX%\share\nushell\lib  # [win]
+    - echo export def hi [] { "foo" }> %CONDA_PREFIX%\share\nushell\lib\foo.nu  # [win]
+    - nu -c "use foo.nu hi; hi"
+  requires:
+    - pip
+
+about:
+  home: https://nushell.sh
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: A new type of shell
+  description: A new type of shell
+  dev_url: https://github.com/nushell/nushell
+  doc_url: https://github.com/nushell/nushell
+
+extra:
+  recipe-maintainers:
+    - thebigdalt
+    - pavelzw

@@ -22,7 +22,7 @@ requirements:
     - cargo-auditable
     - clangdev  # [osx]
   host:
-    - zlib
+    - zlib {{ zlib }}
     - openssl {{ openssl }} # through the run_exports
     - libgit2 {{ libgit2 }} # [osx]
     - libiconv {{ libiconv }} # [osx]
@@ -44,10 +44,12 @@ test:
     - pip
 
 about:
-  home: https://nushell.sh
+  home: https://www.nushell.sh
   license: MIT
   license_family: MIT
-  license_file: LICENSE
+  license_file:
+    - LICENSE
+    - license-files/
   summary: A new type of shell
   description: A new type of shell
   dev_url: https://github.com/nushell/nushell

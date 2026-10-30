@@ -1,7 +1,7 @@
-From 115c1779b99db7b3a76cb700ed00a3b94b2aaca3 Mon Sep 17 00:00:00 2001
-From: Andrii Vetroumov <avetroumov@anaconda.com>
-Date: Thu, 29 Oct 2026 16:05:38 +0200
-Subject: [PATCH] upstream certificates fix
+From 6af29852a9bb502b5f7c03e9a7c9965e85fcbb29 Mon Sep 17 00:00:00 2001
+From: Darren Schroeder <343840+fdncred@users.noreply.github.com>
+Date: Wed, 21 Oct 2026 06:03:50 -0500
+Subject: [PATCH] Bump webpki crates to clear the RustSec audit
 
 ---
  Cargo.lock | 12 ++++++------

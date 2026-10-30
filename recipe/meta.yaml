@@ -22,7 +22,7 @@ requirements:
     - {{ compiler('rust') }}
     - cargo-bundle-licenses
     - cargo-auditable
-    - clangdev  # [osx or win-arm64]
+    - clangdev  # [osx or (win and arm64)]
   host:
     - zlib {{ zlib }}
     - openssl {{ openssl }} # through the run_exports
